@@ -1,0 +1,525 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>baselooper.looper - BaseLooper 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">BaseLooper 0.0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">BaseLooper 0.0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../baselooper.html">baselooper</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for baselooper.looper</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Extra</span><span class="p">,</span> <span class="n">root_validator</span><span class="p">,</span> <span class="n">validator</span>
+
+<span class="kn">from</span> <span class="nn">baselooper</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">State</span><span class="p">,</span> <span class="n">ModuleConfig</span>
+<span class="kn">from</span> <span class="nn">baselooper.utils</span> <span class="kn">import</span> <span class="n">full_name</span>
+
+
+<span class="k">def</span> <span class="nf">iterate_modules</span><span class="p">(</span><span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">skip_references</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]:</span>
+    <span class="sd">""" Iterator over a modules dictionary which resolves references and always yields a Module.</span>
+
+<span class="sd">    :param modules: A dictionary of Modules or references of Modules</span>
+<span class="sd">    :param skip_references: If True references will not be resolved but skipped</span>
+<span class="sd">    """</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">Module</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">key</span><span class="p">,</span> <span class="n">module</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">reference_module</span> <span class="o">=</span> <span class="n">modules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">reference_module</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The name '</span><span class="si">{</span><span class="n">module</span><span class="si">}</span><span class="s2">' is not the key of another module."</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reference_module</span><span class="p">,</span> <span class="n">Module</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"The referenced model has to be an instance of Module."</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">skip_references</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">key</span><span class="p">,</span> <span class="n">reference_module</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Each value of modules must be a Module or str. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">module</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LooperState"><a class="viewcode-back" href="../../generated/baselooper.LooperState.html#baselooper.LooperState">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LooperState</span><span class="p">(</span><span class="n">State</span><span class="p">):</span>
+    <span class="sd">""" A state object containing information and flags of the looper. """</span>
+
+    <span class="n">step_iteration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">""" Counter for the iterations in a step of the looper """</span>
+
+    <span class="n">total_iteration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">""" Counter for the total iterations over all steps of the looper """</span>
+
+    <span class="n">stop_step</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="sd">""" Flag indication that the current step of the looper should be stopped """</span>
+
+    <span class="n">stop_loop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="sd">""" Flag indication that the looper should stop """</span></div>
+
+
+<div class="viewcode-block" id="Looper"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper">[docs]</a><span class="k">class</span> <span class="nc">Looper</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">""" A module which takes a list of other modules and loops over it.</span>
+
+<span class="sd">    A step on a Looper module is not a single iteration of the loop but the whole loop.</span>
+<span class="sd">    That means a single step on a Looper is a loop that might run forever.</span>
+
+<span class="sd">    The state inside the loop is separated from the state outside the loop. The modules which the Looper loops over</span>
+<span class="sd">    never see the state the lopper lives in.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="n">modules</span>
+
+        <span class="c1"># The state for the modules inside the loop</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">:</span> <span class="n">State</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="o">.</span><span class="n">looper_state</span> <span class="o">=</span> <span class="n">LooperState</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Looper.initialise"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.initialise">[docs]</a>    <span class="k">def</span> <span class="nf">initialise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">""" Perform initialization steps of all modules in the loop.</span>
+
+<span class="sd">        Modules in the loop should not depend on modules outside the loop.</span>
+<span class="sd">        Therefore the modules of the loop can only access other modules in the same loop.</span>
+<span class="sd">        The given modules dictionary will be ignored.</span>
+
+<span class="sd">        :param Dict[str, Module] modules: Dictionary of other modules which are already initialised</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The name </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is already in the key of initialized modules."</span>
+                               <span class="sa">f</span><span class="s2">"Either this module is initialised twice or an other module uses the same key."</span><span class="p">)</span>
+
+        <span class="n">looper_modules</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">iterate_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">):</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">initialise</span><span class="p">(</span><span class="n">looper_modules</span><span class="p">)</span>
+            <span class="n">looper_modules</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">module</span>
+
+        <span class="n">modules</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Looper.teardown"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.teardown">[docs]</a>    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+        <span class="sd">""" Teardown all modules in the loop.</span>
+
+<span class="sd">        :param State state: The final state</span>
+<span class="sd">        """</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">iterate_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">,</span> <span class="n">skip_references</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">teardown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Looper.step"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+        <span class="sd">""" Perform a step of the Looper on the state.</span>
+
+<span class="sd">        A step on a Looper module is not a single iteration of the loop but the whole loop.</span>
+<span class="sd">        That means a single step on a Looper might be a loop that runs forever.</span>
+
+<span class="sd">        :param State state: The current state</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"There is already a field with the name </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> on the state "</span>
+                                <span class="sa">f</span><span class="s2">"and it is not the state of this module. It will be overwritten."</span>
+                                <span class="sa">f</span><span class="s2">"This can happen after loading the state or "</span>
+                                <span class="sa">f</span><span class="s2">"when another modules writes on the same field name."</span><span class="p">)</span>
+        <span class="c1"># Add the inner state as module state to the outer state</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">)</span>
+
+        <span class="n">looper_state</span><span class="p">:</span> <span class="n">LooperState</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="o">.</span><span class="n">looper_state</span>
+
+        <span class="c1"># Reset step counter and flag</span>
+        <span class="n">looper_state</span><span class="o">.</span><span class="n">step_iteration</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">looper_state</span><span class="o">.</span><span class="n">stop_step</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">looper_state</span><span class="o">.</span><span class="n">stop_loop</span> <span class="ow">or</span> <span class="n">looper_state</span><span class="o">.</span><span class="n">stop_step</span><span class="p">):</span>
+            <span class="n">looper_state</span><span class="o">.</span><span class="n">step_iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">looper_state</span><span class="o">.</span><span class="n">total_iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">iterate_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">):</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">looper_state</span><span class="o">.</span><span class="n">stop_loop</span> <span class="ow">or</span> <span class="n">looper_state</span><span class="o">.</span><span class="n">stop_step</span><span class="p">:</span>
+                    <span class="k">return</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">step_callback_modules</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Looper.step_callback_modules"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.step_callback_modules">[docs]</a>    <span class="k">def</span> <span class="nf">step_callback_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Call the callbacks of all included modules. """</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">iterate_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">,</span> <span class="n">skip_references</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">step_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Looper.log"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+        <span class="sd">""" Log information from the Looper and from all included modules.</span>
+
+<span class="sd">        :param State state: The current state</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">iterate_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">,</span> <span class="n">skip_references</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">iterations_since_last_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="o">.</span><span class="n">looper_state</span><span class="o">.</span><span class="n">total_iteration</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_count</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">time_since_last_log</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_time</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="o">.</span><span class="n">looper_state</span><span class="o">.</span><span class="n">total_iteration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_time</span> <span class="o">=</span> <span class="n">now</span>
+
+        <span class="n">iterations_per_second</span> <span class="o">=</span> <span class="n">iterations_since_last_log</span> <span class="o">/</span> <span class="n">time_since_last_log</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span> <span class="o">*</span> <span class="mf">0.9</span> <span class="o">+</span> <span class="n">iterations_per_second</span> <span class="o">*</span> <span class="mf">0.1</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span> <span class="o">=</span> <span class="n">iterations_per_second</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Doing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> iterations per second"</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Looper.state_dict"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.state_dict">[docs]</a>    <span class="k">def</span> <span class="nf">state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">state_dict</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Looper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+
+        <span class="n">modules_states</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">modules_states</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">module</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">modules_states</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+
+        <span class="n">state_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">'state'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span><span class="p">,</span>
+            <span class="s1">'_last_log_iteration_count'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_count</span><span class="p">,</span>
+            <span class="s1">'_last_log_iteration_time'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_time</span><span class="p">,</span>
+            <span class="s1">'_iterations_per_second'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span><span class="p">,</span>
+            <span class="s1">'modules'</span><span class="p">:</span> <span class="n">modules_states</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="n">state_dict</span></div>
+
+<div class="viewcode-block" id="Looper.load_state_dict"><a class="viewcode-back" href="../../generated/baselooper.Looper.html#baselooper.Looper.load_state_dict">[docs]</a>    <span class="k">def</span> <span class="nf">load_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">any</span><span class="p">],</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">module_state_dict</span> <span class="ow">in</span> <span class="n">state_dict</span><span class="p">[</span><span class="s1">'modules'</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The module key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> in the given state dict does not exist."</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The module key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> in the given state dict does not exist."</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module_state_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">module_state_dict</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">module_state_dict</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_state</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_count</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s1">'_last_log_iteration_count'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_log_iteration_time</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s1">'_last_log_iteration_time'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_iterations_per_second</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s1">'_iterations_per_second'</span><span class="p">]</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Looper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">strict</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="LooperConfig"><a class="viewcode-back" href="../../generated/baselooper.LooperConfig.html#baselooper.LooperConfig">[docs]</a><span class="k">class</span> <span class="nc">LooperConfig</span><span class="p">(</span><span class="n">ModuleConfig</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="n">Extra</span><span class="o">.</span><span class="n">allow</span><span class="p">):</span>
+    <span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModuleConfig</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="LooperConfig.load"><a class="viewcode-back" href="../../generated/baselooper.LooperConfig.html#baselooper.LooperConfig.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">all_model_field_names</span> <span class="o">=</span> <span class="p">{</span><span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fields__</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span>
+        <span class="n">all_model_field_names</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">field</span><span class="o">.</span><span class="n">alias</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fields__</span><span class="o">.</span><span class="n">values</span><span class="p">()})</span>
+        <span class="n">extra_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">all_model_field_names</span><span class="p">)</span>
+
+        <span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModuleConfig</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span>
+
+        <span class="k">for</span> <span class="n">extra_key</span> <span class="ow">in</span> <span class="n">extra_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">extra_key</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The name </span><span class="si">{</span><span class="n">extra_key</span><span class="si">}</span><span class="s2"> is used in the modules dictionary and in the extra keys. "</span>
+                                 <span class="sa">f</span><span class="s2">"It can not be used in both."</span><span class="p">)</span>
+            <span class="n">modules</span><span class="p">[</span><span class="n">extra_key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_key</span><span class="p">)</span>
+            <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_key</span><span class="p">)</span>
+
+        <span class="n">config_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModuleConfig</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">config_data</span><span class="p">[</span><span class="s1">'modules'</span><span class="p">]</span>
+        <span class="n">loaded_modules</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">module_config</span> <span class="ow">in</span> <span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module_config</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">loaded_modules</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">module_config</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">loaded_modules</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">module_config</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="n">config_data</span><span class="p">[</span><span class="s1">'modules'</span><span class="p">]</span> <span class="o">=</span> <span class="n">loaded_modules</span>
+        <span class="k">return</span> <span class="n">Looper</span><span class="p">(</span><span class="o">**</span><span class="n">config_data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LooperConfig.put_extra_in_modules"><a class="viewcode-back" href="../../generated/baselooper.LooperConfig.html#baselooper.LooperConfig.put_extra_in_modules">[docs]</a>    <span class="nd">@root_validator</span><span class="p">(</span><span class="n">pre</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">put_extra_in_modules</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">all_model_field_names</span> <span class="o">=</span> <span class="p">{</span><span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__fields__</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span>
+        <span class="n">all_model_field_names</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">field</span><span class="o">.</span><span class="n">alias</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__fields__</span><span class="o">.</span><span class="n">values</span><span class="p">()})</span>
+
+        <span class="n">extra_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">all_model_field_names</span><span class="p">)</span>
+
+        <span class="n">modules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModuleConfig</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'modules'</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="k">for</span> <span class="n">extra_key</span> <span class="ow">in</span> <span class="n">extra_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">extra_key</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The name </span><span class="si">{</span><span class="n">extra_key</span><span class="si">}</span><span class="s2"> is used in the modules dictionary and in the extra keys. "</span>
+                                 <span class="sa">f</span><span class="s2">"It can not be used in both."</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">extra_key</span><span class="p">],</span> <span class="p">(</span><span class="n">ModuleConfig</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"extra key can only contain str or ModuleConfig "</span>
+                                 <span class="sa">f</span><span class="s2">"but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">extra_key</span><span class="p">])</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="n">extra_key</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">values</span></div>
+
+<div class="viewcode-block" id="LooperConfig.check_references_are_included"><a class="viewcode-back" href="../../generated/baselooper.LooperConfig.html#baselooper.LooperConfig.check_references_are_included">[docs]</a>    <span class="nd">@validator</span><span class="p">(</span><span class="s1">'modules'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">check_references_are_included</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">modules</span><span class="p">):</span>
+        <span class="n">module_config_keys</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ModuleConfig</span><span class="p">)}</span>
+        <span class="n">references</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)}</span>
+
+        <span class="k">for</span> <span class="n">reference</span> <span class="ow">in</span> <span class="n">references</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">reference</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">module_config_keys</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">reference</span><span class="si">}</span><span class="s2"> is used as reference but there is no module with this name."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">modules</span></div></div>
+
+
+<div class="viewcode-block" id="LooperIterationStop"><a class="viewcode-back" href="../../generated/baselooper.LooperIterationStop.html#baselooper.LooperIterationStop">[docs]</a><span class="k">class</span> <span class="nc">LooperIterationStop</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_iteration_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">total_iteration_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_iteration_limit</span> <span class="o">=</span> <span class="n">step_iteration_limit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_iteration_limit</span> <span class="o">=</span> <span class="n">total_iteration_limit</span>
+
+<div class="viewcode-block" id="LooperIterationStop.step"><a class="viewcode-back" href="../../generated/baselooper.LooperIterationStop.html#baselooper.LooperIterationStop.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">looper_state</span><span class="p">:</span> <span class="n">LooperState</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">looper_state</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_iteration_limit</span> <span class="ow">and</span> <span class="n">looper_state</span><span class="o">.</span><span class="n">step_iteration</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_iteration_limit</span><span class="p">:</span>
+            <span class="n">looper_state</span><span class="o">.</span><span class="n">stop_step</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_iteration_limit</span> <span class="ow">and</span> <span class="n">looper_state</span><span class="o">.</span><span class="n">total_iteration</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_iteration_limit</span><span class="p">:</span>
+            <span class="n">looper_state</span><span class="o">.</span><span class="n">stop_loop</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="LooperIterationStop.state_dict"><a class="viewcode-back" href="../../generated/baselooper.LooperIterationStop.html#baselooper.LooperIterationStop.state_dict">[docs]</a>    <span class="k">def</span> <span class="nf">state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">state_dict</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">LooperIterationStop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+
+        <span class="n">state_dict</span><span class="p">[</span><span class="n">full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">'step_iteration_limit'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_iteration_limit</span><span class="p">,</span>
+            <span class="s1">'total_iteration_limit'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_iteration_limit</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">state_dict</span></div>
+
+<div class="viewcode-block" id="LooperIterationStop.load_state_dict"><a class="viewcode-back" href="../../generated/baselooper.LooperIterationStop.html#baselooper.LooperIterationStop.load_state_dict">[docs]</a>    <span class="k">def</span> <span class="nf">load_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">any</span><span class="p">],</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected the state dict to have a key '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">' but it has not."</span><span class="p">)</span>
+        <span class="n">own_state_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_iteration_limit</span> <span class="o">=</span> <span class="n">own_state_dict</span><span class="p">[</span><span class="s1">'step_iteration_limit'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_iteration_limit</span> <span class="o">=</span> <span class="n">own_state_dict</span><span class="p">[</span><span class="s1">'total_iteration_limit'</span><span class="p">]</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">LooperIterationStop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">strict</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="LooperIterationStopConfig"><a class="viewcode-back" href="../../generated/baselooper.LooperIterationStopConfig.html#baselooper.LooperIterationStopConfig">[docs]</a><span class="k">class</span> <span class="nc">LooperIterationStopConfig</span><span class="p">(</span><span class="n">ModuleConfig</span><span class="p">):</span>
+    <span class="n">step_iteration_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">total_iteration_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="LooperIterationStopConfig.load"><a class="viewcode-back" href="../../generated/baselooper.LooperIterationStopConfig.html#baselooper.LooperIterationStopConfig.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">LooperIterationStop</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span></div></div>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2022, Dominik Mairhöfer |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    </body>
+</html>
