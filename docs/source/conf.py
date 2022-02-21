@@ -20,8 +20,8 @@ sys.path.insert(0, os.path.abspath('../../src/'))
 project = 'BaseLooper'
 copyright = '2022, Dominik Mairhöfer'
 author = 'Dominik Mairhöfer'
-version = '0.0.1'
-release = '0.0.1'
+version = '0.0.2'
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------
