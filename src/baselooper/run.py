@@ -169,6 +169,9 @@ def info(tag: str, definitions: bool):
         jschema = jschema.replace(f'"title": "{config_class.__name__}"', f'"title": "{config_tag}"')
         jschema = jschema.replace(f'/REPLACE/{config_class.__name__}/REPLACE/', f'#/definitions/{config_tag}')
 
+    # Replace definitions of models which are not configurations
+    jschema = re.sub(r'/REPLACE/(?P<name>.*?)/REPLACE/', r'#/definitions/\g<name>', jschema)
+
     schema = json.loads(jschema)
     print(
         f"{schema['title']}\n{schema['description']}"
