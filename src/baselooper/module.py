@@ -151,6 +151,12 @@ class Module(ABC):
 
 
 class ModuleConfig(YAMLBaseConfig, ABC):
+    class Config:
+        @staticmethod
+        def schema_extra(schema: Dict[str, Any], model) -> None:
+            for prop in schema.get('properties', {}).values():
+                prop.pop('title', None)
+
     name: Optional[str] = None
     log_level: int = logging.INFO
     log_time_delta: timedelta = timedelta(seconds=10)
